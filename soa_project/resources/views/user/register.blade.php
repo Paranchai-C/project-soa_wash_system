@@ -1,4 +1,5 @@
 <h1>register interface</h1>
+
 <div class="form-group">
 	<label for="">ชื่อ</label>
 	<input type="text" name="name" class="form-control">
@@ -20,4 +21,4 @@
 	<input type="text" name="Password" class="form-control">
 </div>
 <button class="btn btn-success" type="submit">ย้อนกลับ</button>
-<button class="btn btn-success" type="submit">ตกลง</button>
+<a href="/login">ตกลง</a>

@@ -25,7 +25,13 @@ Route::get('/register', function () {
     return view('user.register');
 });
 
+Route::get('/login', function () {
+    return view('user.login');
+});
 
+Route::get('/wel', function () {
+    return view('user.wel');
+});
 
 
 Route::get('/employee', function () {
