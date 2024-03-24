@@ -27,5 +27,9 @@ npm run build
 ```
 7.
 ```sh
+php artisan key:generate
+```
+8.
+```sh
 php artisan serve
 ```
