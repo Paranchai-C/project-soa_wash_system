@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,8 @@ Route::get('/', function () {
 
 Route::get('/user', function () {
     return view('user.index');
-});
+
+})->name('index');
 
 Route::get('/register', function () {
     return view('user.register');
@@ -27,7 +29,9 @@ Route::get('/register', function () {
 
 Route::get('/login', function () {
     return view('user.login');
-});
+})->name('login');
+
+Route::post('/login_post',[ApiController::class,'login_post'])->name('login_post');
 
 Route::get('/wel', function () {
     return view('user.wel');
