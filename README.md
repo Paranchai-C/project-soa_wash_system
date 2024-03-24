@@ -7,14 +7,24 @@ After clone this project
 
 1.cd to soa_project
 
-2.composer install
+2.
+```sh
+composer install
 
 3.create .env file by copy content .envexample
 
-4.npm install
+4.
+```sh
+npm install
 
-5.npm run dev
+5.
+```sh
+npm run dev
 
-6.npm run build
+6.
+```sh
+npm run build
 
-7.php artisan serve
+7.
+```sh
+php artisan serve
