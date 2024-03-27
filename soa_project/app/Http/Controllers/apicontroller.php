@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Config;
 
 class ApiController extends Controller
 {
@@ -179,5 +180,12 @@ class ApiController extends Controller
             // กรณีเกิดข้อผิดพลาดในการเชื่อมต่อ API
             return response()->json(['message' => $e->getMessage()], 500);
         }
+    }
+
+    public function checkApi()
+    {
+        $apiUrl = Config::get('api.url');
+        $apiUrl = $apiUrl . "/add/" ;
+        dd($apiUrl);
     }
 }

@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//เช็ค url api
+Route::get('/api',[ApiController::class,'checkApi'])->name('check_api');
 
 
 

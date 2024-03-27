@@ -11,5 +11,6 @@
     <h2><a href="/employee">employee.index<br></a></h2>
     <h2><a href="/rider">rider.index<br></a><h2>
     <h2><a href="{{route('getsoftener')}}">getsoftener<br></a><h2>
+    <h2><a href="{{route('check_api')}}">Check URL API<br></a></h2>
 </body>
 </html>
