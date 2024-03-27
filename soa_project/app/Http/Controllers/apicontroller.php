@@ -41,7 +41,6 @@ class ApiController extends Controller
             // การร้องขอไม่สำเร็จ
             return $response->json();
         }
-      
     }
 
     public function login_post(Request $request)
@@ -56,19 +55,39 @@ class ApiController extends Controller
 
         if ($response->successful()) {
             // การร้องขอสำเร็จ
-            $user =$response->json();
-            foreach($user as $u)
-            {
-               echo $u->username;
-            }
-            //return view('user/wel',compact('user'));
+            $user = $response->json();
+
+            return view('user/wel',compact('user'));
         } else {
             // การร้องขอไม่สำเร็จ
             return $response->json();
         }
-      
     }
+    public function order()
+    {
+        try {
+            // ใช้ Guzzle HTTP Client เพื่อดึงข้อมูลจาก API
+            $apipackage = "http://localhost:8081/package/";
+            $response_package = Http::get($apipackage);
+            $package = $response_package->json();
+            return view('user/order',compact('package'));
+            // ตรวจสอบว่าการร้องขอ API สำเร็จหรือไม่
+            /*if ($response->successful()) {
+                // แปลงข้อมูลที่ได้รับกลับมาเป็น JSON
+                $data = $response->json();
 
+                // ทำสิ่งที่คุณต้องการกับข้อมูลที่ได้รับมา
+                // เช่น ส่งข้อมูลไปยัง View เพื่อแสดงผล
+                return $response->object();
+            } else {
+                // กรณีร้องขอ API ไม่สำเร็จ
+                return response()->json(['message' => 'Failed to fetch data from API'], 500);
+            }*/
+        } catch (\Exception $e) {
+            // กรณีเกิดข้อผิดพลาดในการเชื่อมต่อ API
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
     public function getsoftener()
     {
         try {
