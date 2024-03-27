@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Config;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Config as FacadesConfig;
+use PSpell\Config as PSpellConfig;
 
 class ApiController extends Controller
 {
@@ -27,7 +29,8 @@ class ApiController extends Controller
         $tel = $request->phon;
         $address = $request->address;
         //return view('user.index');
-        $response = Http::post('http://localhost:8081/users/add', [
+        $apiUrl = Config::get('api.url');
+        $response = Http::post($apiUrl.'/users/add', [
             "username" => $username,
             "pass" => $pass,
             "name" => $name,
@@ -65,15 +68,39 @@ class ApiController extends Controller
 
         // Generate a unique name for the file
         $id = Session::get('id_user');
-        $response = Http::get('http://localhost:8081/users/' . $id);
-        $user = $response->json();
-        $filename = $user['username'] ."_"; //เพิ่ม id order
+        $apiUrl = Config::get('api.url');
+        $responseorders = Http::post($apiUrl.'/order/add', [
+
+            "users" => $id,
+            "waterTemperature" => $temperature_id,
+            "fabricSoftener" => $softrner_id,
+            "package_" => $package_id,
+            "plusdry" => $plusdry,
+            "status" => "กำลังพิจารณา"
+
+        ]);
+
        
-        // upload image
-       $request->image->move(public_path('image_user'), $filename);
+        if ($responseorders->successful()) {
+            
+            // การร้องขอสำเร็จ
+            $order =  $responseorders->json();
+            $filename = $id . "_".$order['id']; //เพิ่ม id order
+            // upload image
+            $request->image->move(public_path('image_user'), $filename);
+            return redirect()->route('status');
+           
+        } else {
+            // การร้องขอไม่สำเร็จ
+            return $responseorders->json();
+        }
     }
     public function status()
     {
+        $apiUrl = Config::get('api.url');
+        $apiorder = $apiUrl."/order/";
+        $response_order = Http::get($apiorder);
+        $order = $response_order->json();
         return view('user/status');
     }
 
@@ -81,9 +108,10 @@ class ApiController extends Controller
     {
         try {
             // ใช้ Guzzle HTTP Client เพื่อดึงข้อมูลจาก API
-            $apipackage = "http://localhost:8081/package/";
-            $apisoftener = "http://localhost:8081/softener/";
-            $apiTemperature = "http://localhost:8081/WaterTemperature/";
+            $apiUrl = Config::get('api.url');
+            $apipackage = $apiUrl."/package/";
+            $apisoftener = $apiUrl."/softener/";
+            $apiTemperature = $apiUrl."/WaterTemperature/";
             $response_softener = Http::get($apisoftener);
             $response_package = Http::get($apipackage);
             $response_Temperature = Http::get($apiTemperature);
@@ -116,7 +144,8 @@ class ApiController extends Controller
     {
         $username =  $request->Username;
         $pass = $request->Password;
-        $response = Http::post('http://localhost:8081/users/login', [
+        $apiUrl = Config::get('api.url');
+        $response = Http::post($apiUrl.'/users/login', [
             "username" => $username,
             "pass" => $pass
         ]);
@@ -143,8 +172,8 @@ class ApiController extends Controller
 
         // ถ้ามี Session ของผู้ใช้อยู่ ให้ดึงข้อมูลผู้ใช้
         $id = Session::get('id_user');
-
-        $response = Http::get('http://localhost:8081/users/' . $id);
+        $apiUrl = Config::get('api.url');
+        $response = Http::get($apiUrl.'/users/' . $id);
         if ($response->successful()) {
             // การร้องขอสำเร็จ
             $user = $response->json();
@@ -187,5 +216,6 @@ class ApiController extends Controller
         $apiUrl = Config::get('api.url');
         $apiUrl = $apiUrl . "/add/" ;
         dd($apiUrl);
+    
     }
 }
