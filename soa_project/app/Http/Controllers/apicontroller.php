@@ -48,9 +48,9 @@ class ApiController extends Controller
         }
     }
 
-    public function pay()
+    public function pay($id)
     {
-        return view('user/pay');
+        return view('user/pay',compact('id'));
     }
 
     public function order_post(Request $request)
@@ -76,7 +76,7 @@ class ApiController extends Controller
             "fabricSoftener" => $softrner_id,
             "package_" => $package_id,
             "plusdry" => $plusdry,
-            "status" => "กำลังพิจารณา"
+            "status" => "รอการอนุมัติ"
 
         ]);
 
@@ -98,12 +98,48 @@ class ApiController extends Controller
     public function status()
     {
         $apiUrl = Config::get('api.url');
-        $apiorder = $apiUrl."/order/";
+        $id = Session::get('id_user');
+        $apiorder = $apiUrl."/order/".$id;
         $response_order = Http::get($apiorder);
-        $order = $response_order->json();
-        return view('user/status');
+        
+        if ($response_order->successful()) {
+            // การร้องขอสำเร็จ
+            $order = $response_order->json();
+            //return $response_order->json();
+            return view('user/status',compact('order'));
+        } else {
+            // การร้องขอไม่สำเร็จ
+            return $response_order->json();
+        }
     }
+    public function uploadpay(Request $request){
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
+        ]);
+        $file = $request->file('image');
+        $id = Session::get('id_user');
+        $id_oredr =$request->id_order; 
+        $filename = $id . "_".$id_oredr; //เพิ่ม id order
+            // upload image
+            $request->image->move(public_path('pay'), $filename);
+    }
+    public function Deleteoreder($id)
+    {
+        $apiUrl = Config::get('api.url');
+        $apiorder = $apiUrl."/order/delete/".$id;
+        $response_order = Http::delete($apiorder);
+        //unlink($fileToDelete); ลบรูป
+        if ($response_order->successful()) {
+            // การร้องขอสำเร็จ
+            //return $response_order->json();
+            return redirect()->back();
+            //return view('user/status',compact('order'));
+        } else {
+            // การร้องขอไม่สำเร็จ
+            return $response_order->json();
+        }
 
+    }
     public function order()
     {
         try {
@@ -158,7 +194,7 @@ class ApiController extends Controller
         } else {
             // การร้องขอไม่สำเร็จ
             $error = $response->json();
-            echo "fff";
+            //echo "fff";
             return back()->withErrors($error);
         }
     }

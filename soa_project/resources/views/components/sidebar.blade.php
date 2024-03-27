@@ -24,7 +24,7 @@
         </li>
         <li class="sidebar-item">
             <a href="{{route('status')}}" class="sidebar-link">
-                <i class="lni lni-home"></i>
+                <i class="lni lni-layout"></i>
 
                 <span>ประวัติ</span>
             </a>

@@ -38,8 +38,9 @@ Route::get('/order',[ApiController::class,'order'])->name('order');
 Route::post('/order_post',[ApiController::class,'order_post'])->name('order_post');
 Route::get('/wel',[ApiController::class,'wel'])->name('wel');
 Route::get('/status',[ApiController::class,'status'])->name('status');
-Route::get('/pay',[ApiController::class,'pay'])->name('pay');
-
+Route::get('/pay/{id}',[ApiController::class,'pay'])->name('pay');
+Route::get('/delete/{id}',[ApiController::class,'Deleteoreder'])->name('delete');
+Route::post('/uploadpay',[ApiController::class,'uploadpay'])->name('uploadpay');
 
 Route::get('/employee', function () {
     return view('employee.index');

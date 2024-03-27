@@ -45,6 +45,7 @@
                 <input type="checkbox" id="plusdry" name="plusdry" value="1">
     </div><br>
     <div class="form-group">
+    <label for="">รูปตะกร้าผ้า<label>
         <input type="file" name="image" id="image">
     </div>
     <a href="#">
