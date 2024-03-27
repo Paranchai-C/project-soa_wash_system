@@ -22,6 +22,13 @@
                 <span>ใช้บริการ</span>
             </a>
         </li>
+        <li class="sidebar-item">
+            <a href="{{route('status')}}" class="sidebar-link">
+                <i class="lni lni-home"></i>
+
+                <span>ประวัติ</span>
+            </a>
+        </li>
     </ul>
     <div class="sidebar-footer">
         <a href="#" class="sidebar-link">

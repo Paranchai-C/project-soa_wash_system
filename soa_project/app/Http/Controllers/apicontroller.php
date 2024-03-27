@@ -44,7 +44,10 @@ class ApiController extends Controller
         }
     }
 
-
+    public function pay()
+    {
+        return view('user/pay');
+    }
 
     public function order_post(Request $request)
     {
@@ -63,12 +66,15 @@ class ApiController extends Controller
         $id = Session::get('id_user');
         $response = Http::get('http://localhost:8081/users/' . $id);
         $user = $response->json();
-        $filename = $user['username'] ."_". uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension();
+        $filename = $user['username'] ."_"; //เพิ่ม id order
        
         // upload image
-       // $request->image->move(public_path('image_user'), $filename);
+       $request->image->move(public_path('image_user'), $filename);
     }
-
+    public function status()
+    {
+        return view('user/status');
+    }
 
     public function order()
     {
