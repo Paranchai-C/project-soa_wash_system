@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,6 +35,8 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::post('/login_post',[ApiController::class,'login_post'])->name('login_post');
+
+Route::get('/softener',[ApiController::class,'getsoftener'])->name('getsoftener');
 
 Route::get('/wel', function () {
     return view('user.wel');
