@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -43,34 +44,39 @@ class ApiController extends Controller
         }
     }
 
-    public function login_post(Request $request)
+
+
+    public function order_post(Request $request)
     {
-        $username =  $request->Username;
-        $pass = $request->Password;
-        //return view('user.index');
-        $response = Http::post('http://localhost:8081/users/login', [
-            "username" => $username,
-            "pass" => $pass
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
         ]);
 
-        if ($response->successful()) {
-            // การร้องขอสำเร็จ
-            $user = $response->json();
+        // Get the file from the request
+        $file = $request->file('image');
 
-            return view('user/wel',compact('user'));
-        } else {
-            // การร้องขอไม่สำเร็จ
-            return $response->json();
-        }
+        // Generate a unique name for the file
+        $filename = $request->id . uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension();
+
+        // Store the file in the public storage disk with the generated filename
+        $file->storeAs('public', $filename);
     }
+
+
     public function order()
     {
         try {
             // ใช้ Guzzle HTTP Client เพื่อดึงข้อมูลจาก API
             $apipackage = "http://localhost:8081/package/";
+            $apisoftener = "http://localhost:8081/softener/";
+            $apiTemperature = "http://localhost:8081/WaterTemperature/";
+            $response_softener = Http::get($apisoftener);
             $response_package = Http::get($apipackage);
+            $response_Temperature = Http::get($apiTemperature);
             $package = $response_package->json();
-            return view('user/order',compact('package'));
+            $softener = $response_softener->json();
+            $Temperature = $response_Temperature->json();
+            return view('user/order', compact('package', 'softener', 'Temperature'));
             // ตรวจสอบว่าการร้องขอ API สำเร็จหรือไม่
             /*if ($response->successful()) {
                 // แปลงข้อมูลที่ได้รับกลับมาเป็น JSON
@@ -88,6 +94,55 @@ class ApiController extends Controller
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
+    public function user()
+    {
+        return view('user/index');
+    }
+    public function login_post(Request $request)
+    {
+        $username =  $request->Username;
+        $pass = $request->Password;
+        $response = Http::post('http://localhost:8081/users/login', [
+            "username" => $username,
+            "pass" => $pass
+        ]);
+        if ($response->successful()) {
+            // การร้องขอสำเร็จ
+            $user = $response->json();
+            //Session::put('id_user', $user['id']);
+            return redirect()->route('wel');
+        } else {
+            // การร้องขอไม่สำเร็จ
+            $error = $response->json();
+            echo "fff";
+            return back()->withErrors($error);
+        }
+    }
+
+    public function wel()
+    {
+        // เช็คว่ามี Session ของผู้ใช้หรือไม่
+        echo "ssss" . Session::has('id_user');
+        if (!Session::has('id_user')) {
+            return redirect()->route('login')->with('error_message', 'Please login first.');
+        }
+
+        // ถ้ามี Session ของผู้ใช้อยู่ ให้ดึงข้อมูลผู้ใช้
+        $id = Session::get('id_user');
+        $response = Http::post('http://localhost:8081/users/' . $id);
+
+        if ($response->successful()) {
+            // การร้องขอสำเร็จ
+            $user = $response->json();
+            //return view('user.wel', compact('user'));
+        } else {
+            // การร้องขอไม่สำเร็จ
+            $error = $response->json();
+            return back()->withErrors($error);
+        }
+    }
+
+
     public function getsoftener()
     {
         try {

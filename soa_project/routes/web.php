@@ -20,11 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//ของ user
-Route::get('/user', function () {
-    return view('user.index');
 
-})->name('index');
+
+//ของ user
+Route::get('/user',[ApiController::class,'user'])->name('user');
 Route::get('/register', function () {
     return view('user.register');
 });
@@ -35,9 +34,8 @@ Route::post('/login_post',[ApiController::class,'login_post'])->name('login_post
 Route::post('register_post',[ApiController::class,'register_post'])->name('register_post');
 Route::get('/softener',[ApiController::class,'getsoftener'])->name('getsoftener');
 Route::get('/order',[ApiController::class,'order'])->name('order');
-Route::get('/wel', function () {
-    return view('user.wel');
-});
+Route::post('order_post',[ApiController::class,'order_post'])->name('order_post');
+Route::get('/wel',[ApiController::class,'wel'])->name('wel');
 
 
 Route::get('/employee', function () {

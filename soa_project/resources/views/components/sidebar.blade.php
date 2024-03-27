@@ -10,7 +10,7 @@
     <ul class="sidebar-nav">
 
         <li class="sidebar-item">
-            <a href="" class="sidebar-link">
+            <a href="{{route('wel')}}" class="sidebar-link">
                 <i class="lni lni-home"></i>
 
                 <span>หน้าหลัก</span>
