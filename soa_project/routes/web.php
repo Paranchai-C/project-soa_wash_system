@@ -40,9 +40,12 @@ Route::get('/wel',[ApiController::class,'wel'])->name('wel');
 Route::get('/status',[ApiController::class,'status'])->name('status');
 Route::get('/pay',[ApiController::class,'pay'])->name('pay');
 
-
+//employee
 Route::get('/employee', function () {
     return view('employee.index');
+});
+Route::get('/employee/dashboard', function () {
+    return view('employee.dashboard');
 });
 
 Route::get('/rider', function () {
