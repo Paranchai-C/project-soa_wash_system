@@ -34,7 +34,7 @@ Route::post('/login_post',[ApiController::class,'login_post'])->name('login_post
 Route::post('register_post',[ApiController::class,'register_post'])->name('register_post');
 Route::get('/softener',[ApiController::class,'getsoftener'])->name('getsoftener');
 Route::get('/order',[ApiController::class,'order'])->name('order');
-Route::post('order_post',[ApiController::class,'order_post'])->name('order_post');
+Route::post('/order_post',[ApiController::class,'order_post'])->name('order_post');
 Route::get('/wel',[ApiController::class,'wel'])->name('wel');
 
 

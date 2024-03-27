@@ -2,7 +2,7 @@
 @section('title','order')
 @section('content')
 
-<form method="POST" action="">
+<form method="POST" action="{{ route('order_post') }}" enctype="multipart/form-data">
     @csrf
     <div class="form-group" enctype="multipart/form-data">
         <label for="">เลือกpackage</label>
@@ -42,7 +42,7 @@
     </div><br>
     <div class="form-group">
         <label for="">เพิ่มเวลาอบผ้า<label>
-                <input type="checkbox" id="plusdry" name="plusdry" value="plusdry">
+                <input type="checkbox" id="plusdry" name="plusdry" value="1">
     </div><br>
     <div class="form-group">
         <input type="file" name="image" id="image">

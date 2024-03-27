@@ -54,12 +54,19 @@ class ApiController extends Controller
 
         // Get the file from the request
         $file = $request->file('image');
+        $package_id = $request->package;
+        $softrner_id = $request->softener;
+        $temperature_id  = $request->Temperature;
+        $plusdry = $request->plusdry;
 
         // Generate a unique name for the file
-        $filename = $request->id . uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension();
-
-        // Store the file in the public storage disk with the generated filename
-        $file->storeAs('public', $filename);
+        $id = Session::get('id_user');
+        $response = Http::get('http://localhost:8081/users/' . $id);
+        $user = $response->json();
+        $filename = $user['username'] ."_". uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension();
+       
+        // upload image
+       // $request->image->move(public_path('image_user'), $filename);
     }
 
 
@@ -109,7 +116,8 @@ class ApiController extends Controller
         if ($response->successful()) {
             // การร้องขอสำเร็จ
             $user = $response->json();
-            //Session::put('id_user', $user['id']);
+            Session::put('id_user', $user['id']);
+            $id = Session::get('id_user');
             return redirect()->route('wel');
         } else {
             // การร้องขอไม่สำเร็จ
@@ -122,19 +130,18 @@ class ApiController extends Controller
     public function wel()
     {
         // เช็คว่ามี Session ของผู้ใช้หรือไม่
-        echo "ssss" . Session::has('id_user');
         if (!Session::has('id_user')) {
             return redirect()->route('login')->with('error_message', 'Please login first.');
         }
 
         // ถ้ามี Session ของผู้ใช้อยู่ ให้ดึงข้อมูลผู้ใช้
         $id = Session::get('id_user');
-        $response = Http::post('http://localhost:8081/users/' . $id);
 
+        $response = Http::get('http://localhost:8081/users/' . $id);
         if ($response->successful()) {
             // การร้องขอสำเร็จ
             $user = $response->json();
-            //return view('user.wel', compact('user'));
+            return view('user.wel', compact('user'));
         } else {
             // การร้องขอไม่สำเร็จ
             $error = $response->json();
