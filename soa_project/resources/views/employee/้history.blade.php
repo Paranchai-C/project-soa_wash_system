@@ -40,7 +40,7 @@
         <a class="nav-link" href="/employee/dashboard">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/employee/manage">จัดการออเดอร์</a>
+        <a class="nav-link" href="/employee/manage">อนุมัติออเดอร์</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">จัดการรับ-ส่ง</a>
@@ -53,30 +53,22 @@
 
   <!-- Page content -->
   <div id="content">
-    <h2>Admin Dashboard</h2>
+    <h2>Manage Order</h2>
     <p>Welcome to the admin dashboard. You can manage users, products, and settings here.</p>
     <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">รออนุมัติ</h5>
-            <p class="card-text">100</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">กำลังดำเนินการ</h5>
-            <p class="card-text">50</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">ดำเนินการเสร็จสิ้น</h5>
-            <p class="card-text">50</p>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Information</th>
+              </tr>
+            </thead>
+            <tbody>
+                <td>1</td>
+                <td>10/2/2564</td>
+                <td><button type="button" class="btn btn-secondary">ดู</button></td>
+            </tbody>
     </div>
   </div>
 

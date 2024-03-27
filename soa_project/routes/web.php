@@ -47,6 +47,12 @@ Route::get('/employee', function () {
 Route::get('/employee/dashboard', function () {
     return view('employee.dashboard');
 });
+Route::get('/employee/manage', function () {
+    return view('employee.manage');
+});
+Route::get('/employee/history', function () {
+    return view('employee.history');
+});
 
 Route::get('/rider', function () {
     return view('rider.index');
