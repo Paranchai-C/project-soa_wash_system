@@ -35,7 +35,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::post('/login_post',[ApiController::class,'login_post'])->name('login_post');
-
+Route::post('register_post',[ApiController::class,'register_post'])->name('register_post');
 Route::get('/softener',[ApiController::class,'getsoftener'])->name('getsoftener');
 
 Route::get('/wel', function () {

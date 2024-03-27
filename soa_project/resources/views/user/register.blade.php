@@ -1,6 +1,6 @@
 <h1>register interface</h1>
 
-<form method="post" action="/login_post">
+<form method="POST" action="{{ route('register_post') }}">
 	@csrf
 	<div class="form-group">
 		<label for="">ชื่อ</label>
@@ -12,7 +12,7 @@
 	</div>
 	<div class="form-group">
 		<label for="">ที่อยู่</label>
-		<input type="text" name="้home" class="form-control">
+		<input type="text" name="address" class="form-control">
 	</div>
 	<div class="form-group">
 		<label for="">Username</label>

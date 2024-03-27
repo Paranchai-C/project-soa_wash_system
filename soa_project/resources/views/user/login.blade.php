@@ -1,15 +1,19 @@
 <h1>Login</h1>
-<from method="POST" action="/login_post">
+<form method="POST" action="{{ route('login_post') }}">
+	@csrf
 	<div class="form-group">
-
 		<label for="">Username</label>
-		<input type="text" name="Username" class="form-control" >
+		<input type="text" name="Username" id="Username" class="form-control">
 	</div>
 	<div class="form-group">
 		<label for="">Password</label>
 		<input type="text" name="Password" class="form-control">
 	</div>
 	<a href="#">
-		<input type="submit" value="เข้าสู้ระบบ" class="btn btn-primary my-3">
+		<input type="submit" value="login" class="btn btn-primary my-3">
 	</a>
-</from>
+
+	<a href="" class="btn btn-success">
+		กลับ
+	</a>
+</form>
