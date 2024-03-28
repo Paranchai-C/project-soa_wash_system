@@ -8,57 +8,57 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e3f2fd; /* Light blue background */
-            color: #333; /* Dark text color */
+            background-color: #e3f2fd;
+            color: #333;
             padding: 20px;
-            text-align: center; /* Center align the content */
+            text-align: center;
         }
         h1 {
-            margin-bottom: 20px; /* Added margin for better spacing */
-            color: #000; /* Black color for the heading */
+            margin-bottom: 20px;
+            color: #000; 
         }
         form {
-            display: flex; /* Use flexbox for layout */
-            flex-direction: column; /* Arrange items vertically */
-            align-items: center; /* Center items horizontally */
-            max-width: 400px; /* Set maximum width for the form */
-            background-color: #fff; /* White background for the form */
-            padding: 20px; /* Padding for the form */
-            border-radius: 5px; /* Rounded corners for the form */
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Box shadow for the form */
-            margin: 0 auto; /* Center the form horizontally */
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            max-width: 400px; 
+            background-color: #fff; 
+            padding: 20px; 
+            border-radius: 5px; 
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); 
+            margin: 0 auto;
         }
         .form-group {
-            margin-bottom: 20px; /* Margin between form groups */
-            width: 100%; /* Set width to 100% */
-            box-sizing: border-box; /* Include padding and border in the width */
+            margin-bottom: 20px;
+            width: 100%; 
+            box-sizing: border-box; 
         }
         label {
-            display: block; /* Display labels as blocks for better spacing */
-            margin-bottom: 5px; /* Margin between labels */
-            text-align: left; /* Left align labels */
+            display: block; 
+            margin-bottom: 5px; 
+            text-align: left; 
         }
         input[type="text"],
         input[type="password"] {
-            width: 100%; /* Full width input fields */
-            padding: 10px; /* Padding for input fields */
-            border-radius: 3px; /* Rounded corners for input fields */
-            border: 1px solid #ccc; /* Border for input fields */
+            width: 100%;
+            padding: 10px; 
+            border-radius: 3px; 
+            border: 1px solid #ccc; 
         }
         .btn {
-            padding: 10px 20px; /* Padding for buttons */
-            border-radius: 5px; /* Rounded corners for buttons */
-            transition: all 0.3s ease; /* Smooth transition for hover effect */
-            text-decoration: none; /* Remove underline for anchor buttons */
-            color: #fff; /* White text color for buttons */
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            transition: all 0.3s ease; 
+            text-decoration: none; 
+            color: #fff; 
         }
         .btn-primary {
-            background-color: #1565c0; /* Blue background for primary button */
-            border: 2px solid #1565c0; /* Blue border for primary button */
+            background-color: #1565c0;
+            border: 2px solid #1565c0;
         }
         .btn-primary:hover {
-            background-color: #0d47a1; /* Darker blue on hover */
-            border: 2px solid #0d47a1; /* Darker blue border on hover */
+            background-color: #0d47a1; 
+            border: 2px solid #0d47a1; 
         }
     </style>
 </head>

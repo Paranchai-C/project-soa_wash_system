@@ -38,7 +38,7 @@
 </head>
 <body>
     <h1>ร้านซัก-อบ</h1> 
-    <h2><a href="/user">เข้าสู่ระบบผู้ใช้งาน</a></h2>
+    <h2><a href="/user">ระบบผู้ใช้งาน</a></h2>
     <h2><a href="/employee">เข้าสู่ระบบพนักงาน</a></h2>
     <h2><a href="{{route('getsoftener')}}">Get Softener</a></h2>
     <h2><a href="{{route('check_api')}}">Check URL API</a></h2>
