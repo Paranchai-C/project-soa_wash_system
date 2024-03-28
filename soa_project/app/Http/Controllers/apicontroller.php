@@ -250,7 +250,7 @@ class ApiController extends Controller
     public function checkApi()
     {
         $apiUrl = Config::get('api.url');
-        $apiUrl = $apiUrl . "/add/" ;
+        $apiUrl = $apiUrl . "/examples/" ;
         dd($apiUrl);
     
     }
