@@ -366,4 +366,37 @@ class ApiController extends Controller
         }
     }
 
+    public function reciver($id){
+        $apiUrl = Config::get('api.url');
+        $id_emp = Session::get('id_user');
+        $response = Http::put($apiUrl.'/order/updateReciever/'.$id, [
+            "reciever_id" => $id_emp    
+        ]);
+
+        if ($response->successful()) {
+            // การร้องขอสำเร็จ
+            
+            return redirect()->route('allstatus');
+        } else {
+            // การร้องขอไม่สำเร็จ
+            echo $id_emp;
+           // return $response->json();
+        }
+    }
+
+    public function sender($id){
+        $apiUrl = Config::get('api.url');
+        $response = Http::put($apiUrl.'/order/updateSender/'.$id, [
+            "sender_id" => $id
+        ]);
+
+        if ($response->successful()) {
+            // การร้องขอสำเร็จ
+            
+            return redirect()->route('allstatus');
+        } else {
+            // การร้องขอไม่สำเร็จ
+            return $response->json();
+        }
+    }
 }

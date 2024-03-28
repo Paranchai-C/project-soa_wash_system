@@ -43,6 +43,8 @@ Route::get('/pay/{id}',[ApiController::class,'pay'])->name('pay');
 Route::get('/delete/{id}',[ApiController::class,'Deleteoreder'])->name('delete');
 
 Route::get('/approve/{id}',[ApiController::class,'approve'])->name('approve');
+Route::get('/reciver/{id}',[ApiController::class,'reciver'])->name('reciver');
+Route::get('/sender/{id}',[ApiController::class,'sender'])->name('sender');
 
 Route::post('/uploadpay',[ApiController::class,'uploadpay'])->name('uploadpay');
 

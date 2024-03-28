@@ -70,48 +70,57 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach ($order as $o)
                     @if ($o['order_status'] != 'done')
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-img-top">
-                                <img src="{{ asset('image_user/' . $o['user_id'] . '_' . $o['order_id']) }}"
-                                    class="img-fluid" alt="Image" />
-                            </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <div class="card-img-top">
+                                    <img src="{{ asset('image_user/' . $o['user_id'] . '_' . $o['order_id']) }}"
+                                        class="img-fluid" alt="Image" />
+                                </div>
 
-                            <div class="card-body">
-                                <p class="card-text text-left">
-                                    id : {{ $o['order_id'] }}<br>
-                                    user: {{ $o['username'] }}<br>
-                                    status : {{ $o['order_status'] }} <br>
-                                    น้ำยาปรับผ้านุ้ม : {{ $o['softener_name'] }}<br>
-                                    ประเภทน้ำ : {{ $o['temp_name'] }}<br>
-                                    package : size {{ $o['package_name'] }}<br>
-                                    ราคารวม : <?php if ($o['order_plusdry'] == 1) {
-                                        echo intval($o['package_price']) + intval($o['softener_price']) + $o['temp_price'] + 10;
-                                    } else {
-                                        echo intval($o['package_price']) + intval($o['softener_price']) + $o['temp_price'];
-                                    }
-                                    ?><br>
-                                    คนส่ง : {{ $o['sender_name'] }}
-                                </p>
-                                <div class="mt-auto">
-                                    @if ($o['order_status'] == 'not_approved')
-                                        <a href="{{ route('delete', $o['order_id']) }}">
-                                            <button type="button" class="btn btn-danger btn-sm  float-end">ลบ</button>
-                                        </a>
-                                        <a href="{{ route('approve', $o['order_id']) }}">
-                                            <button type="button" class="btn btn-sm btn-success ">อนุมัติ</button>
-                                        </a>
-                                    @elseif($o['order_status'] == 'approved')
-                                        {
-
+                                <div class="card-body">
+                                    <p class="card-text text-left">
+                                        id : {{ $o['order_id'] }}<br>
+                                        user: {{ $o['username'] }}<br>
+                                        status : {{ $o['order_status'] }} <br>
+                                        น้ำยาปรับผ้านุ้ม : {{ $o['softener_name'] }}<br>
+                                        ประเภทน้ำ : {{ $o['temp_name'] }}<br>
+                                        package : size {{ $o['package_name'] }}<br>
+                                        ราคารวม : <?php if ($o['order_plusdry'] == 1) {
+                                            echo intval($o['package_price']) + intval($o['softener_price']) + $o['temp_price'] + 10;
+                                        } else {
+                                            echo intval($o['package_price']) + intval($o['softener_price']) + $o['temp_price'];
                                         }
-                                    @endif
+                                        ?><br>
+                                        คนส่ง : {{ $o['sender_name'] }}
+                                    </p>
+                                    <div class="mt-auto">
+                                        @if ($o['order_status'] == 'not_approved')
+                                            <a href="{{ route('delete', $o['order_id']) }}">
+                                                <button type="button"
+                                                    class="btn btn-danger btn-sm  float-end">ลบ</button>
+                                            </a>
+                                            <a href="{{ route('approve', $o['order_id']) }}">
+                                                <button type="button" class="btn btn-sm btn-success ">อนุมัติ</button>
+                                            </a>
+                                        @elseif($o['order_status'] == 'process')
+                                            @if ($o['reciever_name'] == null)
+                                                <a href="{{ route('reciver', $o['order_id']) }}">
+                                                    <button type="button"
+                                                        class="btn btn-warning btn-sm  float-end">รับผ้า</button>
+                                                </a>
+                                            @elseif($o['sender_name'] == null)
+                                                <a href="{{ route('sender', $o['order_id']) }}">
+                                                    <button type="button"
+                                                        class="btn btn-success btn-sm  float-end">ส่งผ้า</button>
+                                                </a>
+                                            @endif
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endif
-                    
+
                 @endforeach
             </div>
         </div>
