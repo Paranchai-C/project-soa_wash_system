@@ -65,7 +65,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">รออนุมัติ</h5>
-                        <p class="card-text">100</p>
+                        <p class="card-text">{{ $not }}</p>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">กำลังดำเนินการ</h5>
-                        <p class="card-text">50</p>
+                        <p class="card-text">{{ $pro }}</p>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">ดำเนินการเสร็จสิ้น</h5>
-                        <p class="card-text">50</p>
+                        <p class="card-text">{{ $done }}</p>
                     </div>
                 </div>
             </div>

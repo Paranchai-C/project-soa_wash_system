@@ -306,10 +306,24 @@ class ApiController extends Controller
         $id = Session::get('id_user');
         $apiUrl = Config::get('api.url');
         $response = Http::get($apiUrl.'/employees/' . $id);
+        $responseorder1 = Http::get($apiUrl.'/order/status/'.'not_approved');
+        $responseorder2 = Http::get($apiUrl.'/order/status/'.'process');
+        $responseorder3 = Http::get($apiUrl.'/order/status/'.'done');
+        //$order1 = $responseorder1->json();
+        //$order2 = $responseorder2->json();
+        //$order3 = $responseorder3->json();
+        
+        $not = $responseorder1[0]["COUNT(o.status)"];
+        $pro = $responseorder2[0]["COUNT(o.status)"];
+        $done = $responseorder3[0]["COUNT(o.status)"];
+
         if ($response->successful()) {
             // การร้องขอสำเร็จ
             $user = $response->json();
-            return view('employee.dashboard', compact('user'));
+            $order1 = $responseorder1->json();
+            $order2 = $responseorder2->json();
+            $order3 = $responseorder3->json();
+            return view('employee.dashboard', compact('user','not','pro','done'));
         } else {
             // การร้องขอไม่สำเร็จ
             $error = $response->json();
