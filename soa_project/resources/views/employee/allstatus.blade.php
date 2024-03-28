@@ -97,7 +97,7 @@
                                         <a href="{{ route('delete', $o['order_id']) }}">
                                             <button type="button" class="btn btn-danger btn-sm  float-end">ลบ</button>
                                         </a>
-                                        <a href="{{ route('pay', $o['order_id']) }}">
+                                        <a href="{{ route('approve', $o['order_id']) }}">
                                             <button type="button" class="btn btn-sm btn-success ">อนุมัติ</button>
                                         </a>
                                     @elseif($o['order_status'] == 'approved')

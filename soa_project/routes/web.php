@@ -41,6 +41,9 @@ Route::get('/status',[ApiController::class,'status'])->name('status');
 
 Route::get('/pay/{id}',[ApiController::class,'pay'])->name('pay');
 Route::get('/delete/{id}',[ApiController::class,'Deleteoreder'])->name('delete');
+
+Route::get('/approve/{id}',[ApiController::class,'approve'])->name('approve');
+
 Route::post('/uploadpay',[ApiController::class,'uploadpay'])->name('uploadpay');
 
 

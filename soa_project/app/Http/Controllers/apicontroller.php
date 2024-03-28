@@ -47,7 +47,21 @@ class ApiController extends Controller
             return $response->json();
         }
     }
+    public function approve($id){
+        $apiUrl = Config::get('api.url');
+        $response = Http::put($apiUrl.'/order/updateStatus/'.$id, [
+            "status" => 'process'
+        ]);
 
+        if ($response->successful()) {
+            // การร้องขอสำเร็จ
+            
+            return redirect()->route('allstatus');
+        } else {
+            // การร้องขอไม่สำเร็จ
+            return $response->json();
+        }
+    }
     public function pay($id)
     {
         return view('user/pay',compact('id'));
