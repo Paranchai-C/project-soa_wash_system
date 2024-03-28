@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title','order')
+@section('title','pay')
 @section('content')
 <form action="{{route('uploadpay')}}" method="post" enctype="multipart/form-data">
     @csrf

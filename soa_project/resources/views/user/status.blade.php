@@ -29,12 +29,11 @@
                             ?>
                         </p>
                         <div class="mt-auto">
+                            <?php if($o['order_status'] == "not_approved"):?>
                             <a href="{{route('delete',$o['order_id'])}}">
                                 <button type="button" class="btn btn-danger btn-sm  float-end">ลบ</button>
                             </a>
-                            <a href="{{route('pay',$o['order_id'])}}">
-                                <button type="button" class="btn btn-sm btn-success ">จ่ายเงิน</button>
-                            </a>
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>

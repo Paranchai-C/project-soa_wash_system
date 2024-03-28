@@ -64,7 +64,8 @@ class ApiController extends Controller
     }
     public function pay($id)
     {
-        return view('user/pay',compact('id'));
+        $id_pay = $id;
+        return view('user/pay',compact('id_pay'));
     }
 
     public function order_post(Request $request)
