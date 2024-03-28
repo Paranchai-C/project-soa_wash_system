@@ -38,16 +38,15 @@ Route::get('/order',[ApiController::class,'order'])->name('order');
 Route::post('/order_post',[ApiController::class,'order_post'])->name('order_post');
 Route::get('/wel',[ApiController::class,'wel'])->name('wel');
 Route::get('/status',[ApiController::class,'status'])->name('status');
-<<<<<<< HEAD
+
 Route::get('/pay/{id}',[ApiController::class,'pay'])->name('pay');
 Route::get('/delete/{id}',[ApiController::class,'Deleteoreder'])->name('delete');
 Route::post('/uploadpay',[ApiController::class,'uploadpay'])->name('uploadpay');
 
-=======
+
 Route::get('/pay',[ApiController::class,'pay'])->name('pay');
 
 //employee
->>>>>>> 2f32eec3c57ac36512305206388f1c285a3890f1
 Route::get('/employee', function () {
     return view('employee.index');
 });
