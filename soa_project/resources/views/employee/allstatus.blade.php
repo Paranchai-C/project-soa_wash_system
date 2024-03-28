@@ -49,14 +49,14 @@
                 <a class="nav-link" href="{{ route('ewel') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('allstatus')}}">จัดการออเดอร์</a>
+                <a class="nav-link" href="{{ route('allstatus') }}">จัดการออเดอร์</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">จัดการรับ-ส่ง</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/employee">ออกจากระบบ</a>
-              </li>
+            </li>
         </ul>
     </div>
 
@@ -72,13 +72,14 @@
                     <div class="col">
                         <div class="card shadow-sm">
                             <div class="card-img-top">
-                                <img src="image_user/{{ $o['user_id'] }}_{{ $o['order_id'] }}" class="img-fluid"
-                                    alt="Image">
+                                <img src="{{ asset('image_user/' . $o['user_id'] . '_' . $o['order_id']) }}"
+                                    class="img-fluid" alt="Image" />
                             </div>
 
                             <div class="card-body">
                                 <p class="card-text text-left">
                                     id : {{ $o['order_id'] }}<br>
+                                    user: {{ $o['username'] }}<br>
                                     status : {{ $o['order_status'] }} <br>
                                     น้ำยาปรับผ้านุ้ม : {{ $o['softener_name'] }}<br>
                                     ประเภทน้ำ : {{ $o['temp_name'] }}<br>
@@ -88,15 +89,22 @@
                                     } else {
                                         echo intval($o['package_price']) + intval($o['softener_price']) + $o['temp_price'];
                                     }
-                                    ?>
+                                    ?><br>
+                                     คนส่ง : {{$o['sender_name']}}
                                 </p>
                                 <div class="mt-auto">
-                                    <a href="{{ route('delete', $o['order_id']) }}">
-                                        <button type="button" class="btn btn-danger btn-sm  float-end">ลบ</button>
-                                    </a>
-                                    <a href="{{ route('pay', $o['order_id']) }}">
-                                        <button type="button" class="btn btn-sm btn-success ">จ่ายเงิน</button>
-                                    </a>
+                                    @if ($o['order_status'] == 'not_approved')
+                                        <a href="{{ route('delete', $o['order_id']) }}">
+                                            <button type="button" class="btn btn-danger btn-sm  float-end">ลบ</button>
+                                        </a>
+                                        <a href="{{ route('pay', $o['order_id']) }}">
+                                            <button type="button" class="btn btn-sm btn-success ">อนุมัติ</button>
+                                        </a>
+                                    @elseif($o['order_status'] == 'approved')
+                                    {
+
+                                    }
+                                    @endif
                                 </div>
                             </div>
                         </div>

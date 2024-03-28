@@ -76,7 +76,7 @@ class ApiController extends Controller
             "fabricSoftener" => $softrner_id,
             "package_" => $package_id,
             "plusdry" => $plusdry,
-            "status" => "รอการอนุมัติ"
+            "status" => "not_approved"
 
         ]);
 
