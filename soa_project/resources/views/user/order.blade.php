@@ -48,12 +48,12 @@
     <label for="">รูปตะกร้าผ้า<label>
         <input type="file" name="image" id="image">
     </div>
+    <a href="" class="btn btn-success">
+        กลับ
+    </a>
     <a href="#">
         <input type="submit" value="บันทึก" class="btn btn-primary my-3">
     </a>
 
-    <a href="" class="btn btn-success">
-        กลับ
-    </a>
 </form>
 @endsection
