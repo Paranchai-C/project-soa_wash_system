@@ -8,31 +8,31 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e3f2fd; /* Light blue background */
-            color: #333; /* Dark text color */
+            background-color: #e3f2fd;
+            color: #333; 
             padding: 20px;
-            text-align: center; /* Center align the content */
+            text-align: center; 
         }
         h1 {
-            margin-bottom: 20px; /* Added margin for better spacing */
-            color: #000; /* Black color for the heading */
+            margin-bottom: 20px; 
+            color: #000; 
         }
         h2 {
-            margin-bottom: 20px; /* Increased margin for better spacing */
+            margin-bottom: 20px;
         }
         a {
             text-decoration: none;
-            color: #1565c0; /* Blue color for links */
-            padding: 10px 20px; /* Added padding for better button appearance */
-            border: 2px solid #1565c0; /* Blue border for buttons */
-            border-radius: 5px; /* Rounded corners for buttons */
-            display: inline-block; /* Display as inline-block to allow padding */
-            margin: 10px; /* Added margin for spacing between buttons */
-            transition: all 0.3s ease; /* Smooth transition for hover effect */
+            color: #1565c0; 
+            padding: 10px 20px; 
+            border: 2px solid #1565c0; 
+            border-radius: 5px; 
+            display: inline-block; 
+            margin: 10px; 
+            transition: all 0.3s ease; 
         }
         a:hover {
-            background-color: #1565c0; /* Change background color on hover to blue */
-            color: #fff; /* Change text color on hover to white */
+            background-color: #1565c0; 
+            color: #fff; 
         }
     </style>
 </head>
