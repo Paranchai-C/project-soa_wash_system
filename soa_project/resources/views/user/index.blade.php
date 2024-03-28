@@ -39,6 +39,6 @@
 <body>
     <h1>ยินดีต้อนรับ</h1> 
     <h2><a href="{{route('login')}}">เข้าสู่ระบบ</a></h2>
-    <h2><a href="/register">ลงทะเบียน</a></h2>
+    <h2><a href="/register">สมัครสมาชิก</a></h2>
 </body>
 </html>
