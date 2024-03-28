@@ -48,7 +48,7 @@
                 <a class="nav-link" href="{{ route('allstatus') }}">จัดการออเดอร์</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">จัดการรับ-ส่ง</a>
+                <a class="nav-link" href="{{ route('history') }}">ประวัติ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/employee">ออกจากระบบ</a>

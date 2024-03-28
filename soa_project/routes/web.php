@@ -60,7 +60,7 @@ Route::get('/employee/manage', function () {
 Route::get('/employee/history', function () {
     return view('employee.history');
 });
-
+Route::get('/employee/history',[ApiController::class,'history'])->name('history');
 Route::get('/ewel',[ApiController::class,'ewel'])->name('ewel');
 Route::get('/elogin', function () {return view('employee.login');})->name('elogin');
 Route::get('/employee/status',[ApiController::class,'allstatus'])->name('allstatus');
