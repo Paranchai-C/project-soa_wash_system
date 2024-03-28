@@ -20,7 +20,7 @@ Route::get('/api',[ApiController::class,'checkApi'])->name('check_api');
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 
 //ของ user
@@ -49,7 +49,7 @@ Route::get('/pay',[ApiController::class,'pay'])->name('pay');
 //employee
 Route::get('/employee', function () {
     return view('employee.index');
-});
+})->name('eindex');
 Route::get('/employee/dashboard', function () {
     return view('employee.dashboard');
 });
@@ -59,7 +59,9 @@ Route::get('/employee/manage', function () {
 Route::get('/employee/history', function () {
     return view('employee.history');
 });
+Route::get('/elogin', function () {return view('employee.login');})->name('elogin');
 Route::get('/employee/status',[ApiController::class,'allstatus'])->name('allstatus');
+Route::post('/elogin_post',[ApiController::class,'elogin_post'])->name('elogin_post');
 
 
 Route::get('/rider', function () {
