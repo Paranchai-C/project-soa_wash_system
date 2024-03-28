@@ -272,5 +272,26 @@ class ApiController extends Controller
         }
     }
 
-
+    public function elogin_post(Request $request)
+    {
+        $username =  $request->Username;
+        $pass = $request->Password;
+        $apiUrl = Config::get('api.url');
+        $response = Http::post($apiUrl.'/employees/login', [
+            "username" => $username,
+            "pass" => $pass
+        ]);
+        if ($response->successful()) {
+            // การร้องขอสำเร็จ
+            $user = $response->json();
+            Session::put('id_user', $user['id']);
+            $id = Session::get('id_user');
+            return redirect()->route('employee.dashboard');
+        } else {
+            // การร้องขอไม่สำเร็จ
+            $error = $response->json();
+            //echo "fff";
+            return back()->withErrors($error);
+        }
+    }
 }
