@@ -286,11 +286,33 @@ class ApiController extends Controller
             $user = $response->json();
             Session::put('id_user', $user['id']);
             $id = Session::get('id_user');
-            return redirect()->route('employee.dashboard');
+            return redirect()->route('ewel');
         } else {
             // การร้องขอไม่สำเร็จ
             $error = $response->json();
             //echo "fff";
+            return back()->withErrors($error);
+        }
+    }
+
+    public function ewel()
+    {
+        // เช็คว่ามี Session ของผู้ใช้หรือไม่
+        if (!Session::has('id_user')) {
+            return redirect()->route('login')->with('error_message', 'Please login first.');
+        }
+
+        // ถ้ามี Session ของผู้ใช้อยู่ ให้ดึงข้อมูลผู้ใช้
+        $id = Session::get('id_user');
+        $apiUrl = Config::get('api.url');
+        $response = Http::get($apiUrl.'/employees/' . $id);
+        if ($response->successful()) {
+            // การร้องขอสำเร็จ
+            $user = $response->json();
+            return view('employee.dashboard', compact('user'));
+        } else {
+            // การร้องขอไม่สำเร็จ
+            $error = $response->json();
             return back()->withErrors($error);
         }
     }

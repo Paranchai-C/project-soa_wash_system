@@ -46,7 +46,7 @@
     <div id="sidebar">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="/employee/dashboard">Dashboard</a>
+                <a class="nav-link" href="{{ route('ewel') }}">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('allstatus')}}">จัดการออเดอร์</a>
