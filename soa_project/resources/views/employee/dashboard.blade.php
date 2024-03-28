@@ -78,6 +78,10 @@
             <h5 class="card-title">ดำเนินการเสร็จสิ้น</h5>
             <p class="card-text">50</p>
     </div>
+    <h1>Welcome<br></h1>
+    <p>Username: {{ $user['username'] }}<br></p>
+    <p>name: {{ $user['name'] }}</p>
+    <input type="hidden" value="{{ $user['id'] }}" name="id_user" id="id_user">
   </div>
 
   <!-- Bootstrap JS and dependencies -->
