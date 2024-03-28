@@ -69,6 +69,7 @@
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach ($order as $o)
+                    @if ($o['order_status'] != 'done')
                     <div class="col">
                         <div class="card shadow-sm">
                             <div class="card-img-top">
@@ -90,7 +91,7 @@
                                         echo intval($o['package_price']) + intval($o['softener_price']) + $o['temp_price'];
                                     }
                                     ?><br>
-                                     คนส่ง : {{$o['sender_name']}}
+                                    คนส่ง : {{ $o['sender_name'] }}
                                 </p>
                                 <div class="mt-auto">
                                     @if ($o['order_status'] == 'not_approved')
@@ -101,14 +102,16 @@
                                             <button type="button" class="btn btn-sm btn-success ">อนุมัติ</button>
                                         </a>
                                     @elseif($o['order_status'] == 'approved')
-                                    {
+                                        {
 
-                                    }
+                                        }
                                     @endif
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
+                    
                 @endforeach
             </div>
         </div>
