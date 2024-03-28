@@ -60,6 +60,14 @@
             background-color: #0d47a1; 
             border: 2px solid #0d47a1; 
         }
+        .btn-success {
+            background-color: #43a047; 
+            border: 2px solid #43a047; 
+        }
+        .btn-success:hover {
+            background-color: #2e7d32; 
+            border: 2px solid #2e7d32; 
+        }
     </style>
 </head>
 <body>
@@ -86,7 +94,10 @@
             <label for="Password">Password</label>
             <input type="password" name="Password" id="Password" class="form-control">
         </div>
-        <input type="submit" value="บันทึก" class="btn btn-primary my-3">
+        <div>
+        <a href="{{ route('user') }}" class="btn btn-success">กลับ</a>
+        <input type="submit" value="บันทึก" class="btn btn-primary">
+        </div>
     </form>
 </body>
 </html>
