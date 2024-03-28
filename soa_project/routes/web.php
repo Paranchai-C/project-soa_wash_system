@@ -59,6 +59,8 @@ Route::get('/employee/manage', function () {
 Route::get('/employee/history', function () {
     return view('employee.history');
 });
+Route::get('/employee/status',[ApiController::class,'allstatus'])->name('allstatus');
+
 
 Route::get('/rider', function () {
     return view('rider.index');

@@ -254,4 +254,23 @@ class ApiController extends Controller
         dd($apiUrl);
     
     }
+
+    public function allstatus()
+    {
+        $apiUrl = Config::get('api.url');
+        $apiorder = $apiUrl."/order/";
+        $response_order = Http::get($apiorder);
+        
+        if ($response_order->successful()) {
+            // การร้องขอสำเร็จ
+            $order = $response_order->json();
+            //return $response_order->json();
+            return view('employee.allstatus',compact('order'));
+        } else {
+            // การร้องขอไม่สำเร็จ
+            return $response_order->json();
+        }
+    }
+
+
 }

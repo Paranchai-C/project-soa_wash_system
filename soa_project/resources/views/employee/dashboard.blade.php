@@ -40,7 +40,7 @@
         <a class="nav-link" href="/employee/dashboard">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/employee/manage">จัดการออเดอร์</a>
+        <a class="nav-link" href="{{route('allstatus')}}">จัดการออเดอร์</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">จัดการรับ-ส่ง</a>
