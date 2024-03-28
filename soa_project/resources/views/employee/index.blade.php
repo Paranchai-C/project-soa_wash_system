@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -34,8 +35,13 @@
     </style>
 </head>
 <body>
+<button style="background: none; border: none;">
+<h2><a href="/" style="text-decoration: none; color: blue;">
+        <i class="fa-solid fa-house" style="color: blue;"></i> 
+        หน้าแรก
+    </a></h2>
+</button>
     <h1>พนักงาน</h1>
-    <h2><a href="/">หน้าแรก</a></h2>
     <h2><a href="{{ route('elogin') }}">เข้าสู่ระบบ</a></h2>
 </body>
 </html>
