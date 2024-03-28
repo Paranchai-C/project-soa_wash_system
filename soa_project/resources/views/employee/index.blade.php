@@ -35,6 +35,7 @@
 </head>
 <body>
     <h1>พนักงาน</h1>
-    <a href="{{ route('elogin') }}">เข้าสู่ระบบ</a>
+    <h2><a href="{{ route('elogin') }}">เข้าสู่ระบบ</a></h2>
+    <h2><a href="/">หน้าแรก</a></h2>
 </body>
 </html>
