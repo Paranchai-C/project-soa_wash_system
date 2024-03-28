@@ -49,14 +49,14 @@
                 <a class="nav-link" href="/employee/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/employee/manage">อนุมัติออเดอร์</a>
+                <a class="nav-link" href="{{route('allstatus')}}">จัดการออเดอร์</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">จัดการรับ-ส่ง</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/employee/history">ประวัติออเดอร์</a>
-            </li>
+                <a class="nav-link" href="/employee">ออกจากระบบ</a>
+              </li>
         </ul>
     </div>
 
