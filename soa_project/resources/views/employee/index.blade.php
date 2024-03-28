@@ -32,15 +32,20 @@
             background-color: #1565c0;
             color: #fff;
         }
+        .button-container {
+            float: left;
+        }
     </style>
 </head>
 <body>
+    <div class="button-container">
 <button style="background: none; border: none;">
 <h2><a href="/" style="text-decoration: none; color: blue;">
         <i class="fa-solid fa-house" style="color: blue;"></i> 
         หน้าแรก
     </a></h2>
 </button>
+    </div>
     <h1>พนักงาน</h1>
     <h2><a href="{{ route('elogin') }}">เข้าสู่ระบบ</a></h2>
 </body>
