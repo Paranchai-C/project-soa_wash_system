@@ -79,7 +79,10 @@ class ApiController extends Controller
         $softrner_id = $request->softener;
         $temperature_id  = $request->Temperature;
         $plusdry = $request->plusdry;
-
+        if($plusdry == null)
+        {
+            $plusdry = 0;
+        }
         // Generate a unique name for the file
         $id = Session::get('id_user');
         $apiUrl = Config::get('api.url');
@@ -113,7 +116,7 @@ class ApiController extends Controller
     {
         $apiUrl = Config::get('api.url');
         $id = Session::get('id_user');
-        $apiorder = $apiUrl."/order/".$id;
+        $apiorder = $apiUrl."/order/userId/".$id;
         $response_order = Http::get($apiorder);
         
         if ($response_order->successful()) {
