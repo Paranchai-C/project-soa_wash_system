@@ -31,7 +31,7 @@
         </li>
     </ul>
     <div class="sidebar-footer">
-        <a href="#" class="sidebar-link">
+        <a href="{{route('login')}}" class="sidebar-link">
             <i class="lni lni-exit"></i>
             <span>ออกจากระบบ</span>
         </a>
